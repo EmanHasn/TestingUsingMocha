@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mocha Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="lib/mocha.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+
+    <script src="lib/chai.js"></script>
+    <script src="lib/mocha.js"></script>
+
+    <script class="mocha-init">
+      mocha.setup('bdd');
+      // mocha.checkLeaks();
+    </script>
+<script>
+const capitalizeText = (input) => {
+  if (typeof input !== "string"){
+    throw new TypeError("parameter should be string")
+  };
+  return input.toUpperCase();
+};
+
+</script>
+<script type="module">
+
+describe.skip("unit test for capitalizeText function", function(){
+    it("test that return string", function(){
+        capitalizeText("iti").should.be.a("string");
+    })
+    it("throw error when pass number", function(){
+        expect(function(){
+            capitalizeText(12)
+        }).to.throw(TypeError, "parameter should be string");
+    })
+    it("takes lower to cap", function(){
+        mocha.equal(capitalizeText("iti"), "ITI");
+    })
+    it("test that if the params string must retutn the same value", function(){
+        expect(capitalizeText("iti")).to.be.not.equal("hello");
+    })
+})
+</script>
+    <script class="mocha-exec">
+        mocha.run();</script>
+  </body>
+</html>
